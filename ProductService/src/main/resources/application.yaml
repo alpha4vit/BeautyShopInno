@@ -1,8 +1,8 @@
 spring:
+  config:
+    import: optional:file:./ProductService/.env[.properties]
   application:
     name: ProductService
-  config:
-    import: optional:file:.env[.properties]
   datasource:
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
