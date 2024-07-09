@@ -1,7 +1,6 @@
 package com.innowise.productservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.innowise.productservice.entity.MeasurementTypeEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,7 +18,8 @@ public record Product(
         @JsonProperty(value = "original_price")
         BigDecimal originalPrice,
 
-        //TODO currency
+        @JsonProperty(value = "original_currency")
+        String originalCurrency,
 
         String size,
 
