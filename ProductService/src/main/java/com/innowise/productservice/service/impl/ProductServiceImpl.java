@@ -2,10 +2,13 @@ package com.innowise.productservice.service.impl;
 
 import com.innowise.productservice.entity.ProductEntity;
 import com.innowise.productservice.repository.ProductRepository;
+import com.innowise.productservice.service.MeasurementTypeService;
+import com.innowise.productservice.service.ProductCategoryService;
 import com.innowise.productservice.service.ProductService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +17,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductCategoryService productCategoryService;
+    private final MeasurementTypeService measurementTypeService;
 
     @Override
     public ProductEntity getById(Long id) {
@@ -27,7 +32,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ProductEntity save(ProductEntity product) {
+        var category = productCategoryService.getById(product.getCategory().getId());
+        var measurementType = measurementTypeService.getById(product.getMeasurementType().getId());
+        product.setCategory(category);
+        product.setMeasurementType(measurementType);
         return productRepository.save(product);
     }
 

@@ -8,7 +8,12 @@ import org.mapstruct.MappingConstants;
 
 import java.util.List;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(
+        componentModel = MappingConstants.ComponentModel.SPRING,
+        uses = {
+                ProductCategoryMapper.class
+        }
+)
 public interface ProductMapper {
 
     @Mapping(target = "measurementTypeId", source = "measurementType.id")

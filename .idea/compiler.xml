@@ -11,5 +11,10 @@
         <module name="ProductService.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CategoryService" target="21" />
+      <module name="CategoryService.main" target="21" />
+      <module name="CategoryService.test" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
