@@ -25,11 +25,13 @@ public class OrderEntity {
     @Column(name = "order_state")
     private OrderState orderState;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "sum_price")
     private Double sumPrice;
 
     @OneToMany
     private List<OrderProductEntity> products;
-
 
 }
