@@ -1,10 +1,10 @@
 spring:
   config:
-    import: optional:file:./ProductService/.env[.properties]
+    import: optional:file:.env[.properties]
   application:
     name: UserService
   datasource:
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
+    url: jdbc:postgresql://${POSTGRES_USER_HOST}:${POSTGRES_USER_PORT}/${POSTGRES_USER_DATABASE}

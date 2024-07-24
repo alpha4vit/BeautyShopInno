@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/CategoryService" />
     <file type="web" url="file://$PROJECT_DIR$/OrderService" />
     <file type="web" url="file://$PROJECT_DIR$/ProductService" />
+    <file type="web" url="file://$PROJECT_DIR$/ReviewService" />
     <file type="web" url="file://$PROJECT_DIR$/UserService" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK">

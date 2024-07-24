@@ -1,0 +1,13 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: ReviewService
+  data:
+    mongodb:
+      authentication-database: admin
+      host: ${MONGO_REVIEW_HOST}
+      port: ${MONGO_REVIEW_PORT}
+      database: ${MONGO_REVIEW_DATABASE}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
