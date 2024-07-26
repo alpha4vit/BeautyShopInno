@@ -3,6 +3,8 @@ version: '3'
 networks:
   spring:
     driver: bridge
+  mongo:
+    driver: bridge
 
 
 services:
@@ -47,10 +49,26 @@ services:
     image: mongo:latest
     container_name: mongo
     environment:
-      - MONGO_INITDB_DATABASE=ms-notification
-      - MONGO_INITDB_ROOT_USERNAME=rootuser
-      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+      - MONGO_INITDB_DATABASE=${MONGO_REVIEW_DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     ports:
       - '27017:27017'
     networks:
       - spring
+      - mongo
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - "27018:8081"
+    networks:
+      - mongo
+    depends_on:
+      - mongodb
