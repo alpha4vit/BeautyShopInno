@@ -1,10 +1,18 @@
+server:
+  port: 8081
 spring:
-  application:
-    name: ProductService
   config:
     import: optional:file:.env[.properties]
+  application:
+    name: ProductService
   datasource:
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
+    url: jdbc:postgresql://${POSTGRES_PRODUCT_HOST}:${POSTGRES_PRODUCT_PORT}/${POSTGRES_PRODUCT_DATABASE}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true

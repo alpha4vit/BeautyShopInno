@@ -1,0 +1,18 @@
+server:
+  port: 8083
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: OrderService
+  datasource:
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_ORDER_HOST}:${POSTGRES_ORDER_PORT}/${POSTGRES_ORDER_DATABASE}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true

@@ -33,3 +33,11 @@ create table if not exists product_image
     image varchar(37),
     product_id bigint references product(id) on delete cascade
 );
+
+
+--changeset roman_gurinovich:2
+alter table product add column size varchar(50);
+alter table product add column original_currency varchar(20);
+
+--changeset roman_gurinovich:3
+insert into product_category(title) values ('ROOT_CATEGORY');

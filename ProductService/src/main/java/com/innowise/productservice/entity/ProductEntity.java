@@ -29,6 +29,9 @@ public class ProductEntity {
 
     private BigDecimal originalPrice;
 
+    @Column(name = "original_currency")
+    private String originalCurrency;
+
     private String size;
 
     @ManyToOne
@@ -41,7 +44,7 @@ public class ProductEntity {
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     private ProductCategoryEntity category;
 
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<ProductImageEntity> images;
 
 }
